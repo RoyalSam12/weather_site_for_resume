@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <link rel="shortcut icon" type="image/png" href="{% static 'fav_ico/weather_32x32.ico' %}"/>
+
+    <script src="{% static "vendor/js/jquery-3.3.1.slim.min.js" %}" defer></script>
+
+    <script src="{% static "vendor/js/popper.min.js" %}" async></script>
+
+    <link rel="stylesheet" href="{% static "vendor/css/bootstrap.min.css" %}">
+
+    <script src="{% static "vendor/js/bootstrap.min.js" %}" defer></script>
+    <meta charset="UTF-8">
+    <title>Детальная информация</title>
+</head>
+<body>
+{% include 'weather/basehead.html' %}
+<div class="container">
+    {% if error %}
+        <div class="alert alert-danger mt-3" role="alert">
+            {{ error }}
+        </div>
+        <a class="btn btn-primary btn-lg" href="{% url 'weather:index' %}">Вернутся на главную</a>
+    {% else %}
+        <div class="jumbotron mt-3">
+            {% include 'weather/weather_description.html' %}
+            <h1 class="display-4">Погода {{ city_now.city_name }}</h1>
+            <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention
+                to featured content or information.</p>
+            <hr class="my-4">
+            <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
+            <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
+        </div>
+    {% endif %}
+    {% include 'weather/basefooter.html' %}
+</div>
+</body>
+</html>
