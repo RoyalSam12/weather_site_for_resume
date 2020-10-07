@@ -26,11 +26,122 @@
         <div class="jumbotron mt-3">
             {% include 'weather/weather_description.html' %}
             <h1 class="display-4">Погода {{ city_now.city_name }}</h1>
-            <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention
-                to featured content or information.</p>
+            <h3 class="display-4">Температура: {{ city_now.weather_temp }}°С</h3>
+            <h2 class="lead">Чувтсвуется как: {{ city_now.weather_feels_temp }}°С</h2>
+            <h2 class="lead">Скорость ветра: {{ city_now.wind_speed }}</h2>
+            <h2 class="lead">{{ city_now.weather_description }}</h2>
             <hr class="my-4">
-            <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
-            <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
+            <h1 class="display-4 text-center">Более детальная информация</h1>
+            <div id="accordion">
+                <div class="card">
+                    <div class="card-header" id="headingOne">
+                        <h5 class="mb-0">
+                            <button class="btn btn-light btn-lg" data-toggle="collapse" data-target="#collapseOne"
+                                    aria-expanded="true" aria-controls="collapseOne">
+                                Погода до конца дня
+                            </button>
+                        </h5>
+                    </div>
+                    <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
+                        <div class="row">
+                            {% for city_now in city_hourly.values %}
+                                <div class="col-sm-12 col-lg-6 pb-2">
+
+                                    <div class="card h-100 shadow">
+                                        {% include 'weather/weather_description.html' %}
+                                        <div class="card-body">
+                                            <h1>Температура: {{ city_now.temp_day }}°С</h1>
+                                            <p>Чувсвуется как: {{ city_now.feels_temp_day }}°С</p>
+                                            <p>Скорость ветра: {{ city_now.wind_speed }}</p>
+                                            <p>{{ city_now.weather_description }}</p>
+                                        </div>
+                                        <div class="card-footer">
+                                            <h1>{{ city_now.time }}</h1>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header" id="headingTwo">
+                        <h5 class="mb-0">
+                            <button class="btn btn-light btn-lg collapsed" data-toggle="collapse"
+                                    data-target="#collapseTwo"
+                                    aria-expanded="false" aria-controls="collapseTwo">
+                                Погода на неделю вперед
+                            </button>
+                        </h5>
+                    </div>
+                    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+                        <div class="row">
+                            {% for city_now in city_daily.values %}
+                                <div class="col-sm-12 col-lg-6 pb-2">
+
+                                    <div class="card h-100 shadow">
+                                        {% include 'weather/weather_description.html' %}
+                                        <div class="card-body">
+                                            <div class="text-center">
+                                                <h1>Температура</h1>
+                                            </div>
+                                            <div class="row d-flex justify-content-around">
+                                                <h2>Утром</h2>
+                                                <h2>Днем</h2>
+                                            </div>
+                                            <div class="row d-flex justify-content-around">
+                                                <h2>{{ city_now.temp_morn }}°С</h2>
+                                                <h2>{{ city_now.temp_day }}°С</h2>
+
+                                            </div>
+                                            <hr class="my-4">
+                                            <div class="row d-flex justify-content-around">
+                                                <h2>Вечером</h2>
+                                                <h2>Ночью</h2>
+                                            </div>
+                                            <div class="row d-flex justify-content-around">
+                                                <h2>{{ city_now.temp_eve }}°С</h2>
+                                                <h2>{{ city_now.temp_night }}°С</h2>
+                                            </div>
+                                            <hr class="my-4">
+                                            <div class="text-center">
+                                                <h3>Чувствуется как</h3>
+                                            </div>
+                                            <div class="row d-flex justify-content-around">
+                                                <h2>Утром</h2>
+                                                <h2>Днем</h2>
+                                            </div>
+                                            <div class="row d-flex justify-content-around">
+                                                <h2>{{ city_now.feels_temp_morn }}°С</h2>
+                                                <h2>{{ city_now.feels_temp_day }}°С</h2>
+
+                                            </div>
+                                            <hr class="my-4">
+                                            <div class="row d-flex justify-content-around">
+                                                <h2>Вечером</h2>
+                                                <h2>Ночью</h2>
+                                            </div>
+                                            <div class="row d-flex justify-content-around">
+                                                <h2>{{ city_now.feels_temp_eve }}°С</h2>
+                                                <h2>{{ city_now.feels_temp_night }}°С</h2>
+                                            </div>
+                                        </div>
+                                        <hr class="my-4">
+                                        <div class="text-center pb-3">
+                                            <h3>{{ city_now.weather_description }}</h3>
+                                        </div>
+                                        <div class="card-footer">
+                                            <h1>{{ city_now.day_of_week }}</h1>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     {% endif %}
     {% include 'weather/basefooter.html' %}

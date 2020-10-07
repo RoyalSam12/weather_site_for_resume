@@ -1,24 +1,39 @@
 {% load static %}
 {% if city_now.weather_description == 'Ясно' %}
-    <img src="{% static 'images/01d@2x.png' %}" class="float-right rounded-circle shadow bg-white" alt="{{ weather_description }}" width="100"
+    <img src="{% static 'images/01d@2x.png' %}" class="float-right rounded-circle shadow bg-white ml-3 mt-3"
+         alt="{{ weather_description }}" width="100"
          height="100">
 {% elif city_now.weather_description == 'Облачно с прояснениями' %}
-    <img src="{% static 'images/02d@2x.png' %}" class="float-right rounded-circle shadow bg-white" alt="{{ weather_description }}" width="100"
-         height="100">
-{% elif city_now.weather_description == 'Пасмурно' %}
-    <img src="{% static 'images/03d@2x.png' %}" class="float-right rounded-circle shadow bg-white" alt="{{ weather_description }}" width="100"
+    <img src="{% static 'images/02d@2x.png' %}" class="float-right rounded-circle shadow bg-white  ml-3 mt-3"
+         alt="{{ weather_description }}" width="100"
          height="100">
 {% elif city_now.weather_description == 'Переменная облачность' %}
-    <img src="{% static 'images/04d@2x.png' %}" class="float-right rounded-circle shadow bg-white" alt="{{ weather_description }}" width="100"
+    <img src="{% static 'images/03d@2x.png' %}" class="float-right rounded-circle shadow bg-white  ml-3 mt-3"
+         alt="{{ weather_description }}" width="100"
+         height="100">
+{% elif city_now.weather_description == 'Небольшая облачность' %}
+    <img src="{% static 'images/03d@2x.png' %}" class="float-right rounded-circle shadow bg-white  ml-3 mt-3"
+         alt="{{ weather_description }}" width="100"
+         height="100">
+{% elif city_now.weather_description == 'Пасмурно' %}
+    <img src="{% static 'images/04d@2x.png' %}" class="float-right rounded-circle shadow bg-white ml-3 mt-3"
+         alt="{{ weather_description }}" width="100"
          height="100">
 {% elif city_now.weather_description == 'Небольшой дождь' %}
-    <img src="{% static 'images/09d@2x.png' %}" class="float-right rounded-circle shadow bg-white"  alt="{{ weather_description }}" width="100"
+    <img src="{% static 'images/09d@2x.png' %}" class="float-right rounded-circle shadow bg-white ml-3 mt-3"
+         alt="{{ weather_description }}" width="100"
+         height="100">
+    {% elif city_now.weather_description == 'Небольшой проливной дождь' %}
+    <img src="{% static 'images/09d@2x.png' %}" class="float-right rounded-circle shadow bg-white ml-3 mt-3"
+         alt="{{ weather_description }}" width="100"
          height="100">
 {% elif city_now.weather_description == 'Дождь' %}
-    <img src="{% static 'images/10d@2x.png' %}" class="float-right rounded-circle shadow bg-white" alt="{{ weather_description }}" width="100"
+    <img src="{% static 'images/10d@2x.png' %}" class="float-right rounded-circle shadow bg-white  ml-3 mt-3"
+         alt="{{ weather_description }}" width="100"
          height="100">
 {% elif city_now.weather_description == 'Сильный дождь' %}
-    <img src="{% static 'images/11d@2x.png' %}" class="float-right rounded-circle shadow bg-white" alt="{{ weather_description }}" width="100"
+    <img src="{% static 'images/11d@2x.png' %}" class="float-right rounded-circle shadow bg-white  ml-3 mt-3"
+         alt="{{ weather_description }}" width="100"
          height="100">
 {% endif %}
 

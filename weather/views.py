@@ -1,6 +1,5 @@
 from django.shortcuts import render, redirect
-from django.http import HttpResponseRedirect
-from django.urls import reverse, NoReverseMatch
+from django.urls import NoReverseMatch
 
 from .weather_check import hyper_weather_check
 
