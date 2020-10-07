@@ -25,7 +25,6 @@ def hyper_weather_check(city):
             'weather_description': data['weather'][0]['description'].capitalize(),
             'weather_temp': data['main']['temp'],
             'weather_feels_temp': data['main']['feels_like'],
-            'weather_max_temp': data['main']['temp_max'],
             'wind_speed': data['wind']['speed']
         }
         api_url = 'https://api.openweathermap.org/data/2.5/onecall'
@@ -54,8 +53,6 @@ def hyper_weather_check(city):
             data_for_views['daily'][ctime(day_info['dt'])] = {
                 'day_of_week': ctime(day_info.get('dt'))[:10],
                 'temp_day': day_info['temp']['day'],
-                'temp_min': day_info['temp']['min'],
-                'temp_max': day_info['temp']['max'],
                 'temp_night': day_info['temp']['night'],
                 'temp_eve': day_info['temp']['eve'],
                 'temp_morn': day_info['temp']['morn'],
