@@ -1,3 +1,5 @@
+from os import getenv
+
 from time import ctime
 
 import requests
@@ -7,7 +9,7 @@ def hyper_weather_check(city):
     api_url = 'https://api.openweathermap.org/data/2.5/weather'
     params = {
         'q': city,
-        'appid': 'fe6c9ac08e96ecdd33f559f07bc59da7',
+        'appid': getenv('API_KEY'),
         'units': 'metric',
         'lang': 'ru'
     }

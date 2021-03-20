@@ -1,8 +1,10 @@
+from os import getenv
+
 from pathlib import Path
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-SECRET_KEY = '6%8m8b-^vm#zzo0g#k0wl8faq2%#0%nvigsnz-046a=@bv6y=%'
+SECRET_KEY = getenv('SECRET_KEY')
 
 DEBUG = True
 
