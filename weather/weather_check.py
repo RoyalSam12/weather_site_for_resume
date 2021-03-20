@@ -1,4 +1,4 @@
-pip from time import ctime
+from time import ctime
 
 import requests
 
