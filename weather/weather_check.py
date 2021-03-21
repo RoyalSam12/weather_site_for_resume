@@ -1,4 +1,4 @@
-from os import getenv
+from decouple import config
 
 from time import ctime
 
@@ -9,7 +9,7 @@ def hyper_weather_check(city):
     api_url = 'https://api.openweathermap.org/data/2.5/weather'
     params = {
         'q': city,
-        'appid': getenv('API_KEY'),
+        'appid': config('API_KEY'),
         'units': 'metric',
         'lang': 'ru'
     }
